@@ -1,0 +1,7 @@
+{
+  "domain": "my-host",
+  "token": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "intervalSeconds": 300,
+  "autoStart": false,
+  "writeLogsToFile": false
+}

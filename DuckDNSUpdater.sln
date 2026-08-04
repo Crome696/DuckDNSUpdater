@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{827E0CD3-B72D-47B6-A68D-7590B98EB39B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{B2C4E8A1-5F3D-4A6B-9C1E-8D7F6A5B4C3D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuckDNSUpdater", "src\DuckDNSUpdater\DuckDNSUpdater.csproj", "{9A94E863-6056-4765-8199-6E0C5FE7DCEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuckDNSUpdater.Tests", "tests\DuckDNSUpdater.Tests\DuckDNSUpdater.Tests.csproj", "{C1D2E3F4-A5B6-7890-CDEF-123456789012}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9A94E863-6056-4765-8199-6E0C5FE7DCEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A94E863-6056-4765-8199-6E0C5FE7DCEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A94E863-6056-4765-8199-6E0C5FE7DCEA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9A94E863-6056-4765-8199-6E0C5FE7DCEA}.Debug|x64.Build.0 = Debug|Any CPU
+		{9A94E863-6056-4765-8199-6E0C5FE7DCEA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9A94E863-6056-4765-8199-6E0C5FE7DCEA}.Debug|x86.Build.0 = Debug|Any CPU
+		{9A94E863-6056-4765-8199-6E0C5FE7DCEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A94E863-6056-4765-8199-6E0C5FE7DCEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A94E863-6056-4765-8199-6E0C5FE7DCEA}.Release|x64.ActiveCfg = Release|Any CPU
+		{9A94E863-6056-4765-8199-6E0C5FE7DCEA}.Release|x64.Build.0 = Release|Any CPU
+		{9A94E863-6056-4765-8199-6E0C5FE7DCEA}.Release|x86.ActiveCfg = Release|Any CPU
+		{9A94E863-6056-4765-8199-6E0C5FE7DCEA}.Release|x86.Build.0 = Release|Any CPU
+		{C1D2E3F4-A5B6-7890-CDEF-123456789012}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1D2E3F4-A5B6-7890-CDEF-123456789012}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1D2E3F4-A5B6-7890-CDEF-123456789012}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C1D2E3F4-A5B6-7890-CDEF-123456789012}.Debug|x64.Build.0 = Debug|Any CPU
+		{C1D2E3F4-A5B6-7890-CDEF-123456789012}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C1D2E3F4-A5B6-7890-CDEF-123456789012}.Debug|x86.Build.0 = Debug|Any CPU
+		{C1D2E3F4-A5B6-7890-CDEF-123456789012}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1D2E3F4-A5B6-7890-CDEF-123456789012}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1D2E3F4-A5B6-7890-CDEF-123456789012}.Release|x64.ActiveCfg = Release|Any CPU
+		{C1D2E3F4-A5B6-7890-CDEF-123456789012}.Release|x64.Build.0 = Release|Any CPU
+		{C1D2E3F4-A5B6-7890-CDEF-123456789012}.Release|x86.ActiveCfg = Release|Any CPU
+		{C1D2E3F4-A5B6-7890-CDEF-123456789012}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = postSolution
+		{9A94E863-6056-4765-8199-6E0C5FE7DCEA} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+		{C1D2E3F4-A5B6-7890-CDEF-123456789012} = {B2C4E8A1-5F3D-4A6B-9C1E-8D7F6A5B4C3D}
+	EndGlobalSection
+EndGlobal
