@@ -136,5 +136,5 @@ Output: `src/DuckDNSUpdater/bin/Release/net8.0-windows/win-x64/publish/`
 - Network exceptions are surfaced to the UI as a “Network error” message.
 
 ## License and credits
-No `LICENSE` file is present in this repository snapshot (open question if you plan to publish binaries publicly).
+This project is licensed under the [MIT License](LICENSE).
 
