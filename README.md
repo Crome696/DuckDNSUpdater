@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo-horizontal.png" alt="DuckDNSUpdater" width="75%">
+  <img src="assets/hero-banner.jpg" alt="DuckDNS Updater — portable Windows app that keeps your DuckDNS domain up to date" width="75%">
 </p>
 
 # DuckDNS Updater
