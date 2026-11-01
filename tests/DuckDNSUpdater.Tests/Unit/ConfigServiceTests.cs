@@ -121,6 +121,27 @@ public class ConfigServiceTests
         Assert.Equal(30, loaded.IntervalSeconds);
     }
 
+    [Fact]
+    public void Load_NullDomainAndToken_LoadsAsEmptyAndFailsValidation()
+    {
+        using var temp = new TempConfigDir();
+        File.WriteAllText(temp.ConfigPath, """
+            {
+              "domain": null,
+              "token": null,
+              "intervalSeconds": 300,
+              "autoStart": false,
+              "writeLogsToFile": false
+            }
+            """);
+
+        var loaded = new ConfigService(temp.ConfigPath).Load();
+
+        Assert.Equal("", loaded.Domain);
+        Assert.Equal("", loaded.Token);
+        Assert.Throws<InvalidOperationException>(() => ConfigService.Validate(loaded));
+    }
+
     private static AppConfig ValidConfig() => new()
     {
         Domain = "host",
