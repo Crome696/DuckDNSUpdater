@@ -1,0 +1,82 @@
+name: Auto Release
+
+# Runs after every push to master (including merged PRs). A release is only
+# created when the version in the csproj has no matching tag yet.
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: auto-release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Read version from csproj
+        id: version
+        run: |
+          VERSION=$(grep -oP '<Version>\K[^<]+' src/DuckDNSUpdater/DuckDNSUpdater.csproj | head -n1)
+          if [ -z "$VERSION" ]; then
+            echo "::error::No <Version> found in DuckDNSUpdater.csproj"
+            exit 1
+          fi
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "tag=v$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Check whether tag already exists
+        id: check
+        env:
+          TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          if git rev-parse -q --verify "refs/tags/$TAG" >/dev/null; then
+            echo "Tag $TAG already exists - no new version, skipping release."
+            echo "new=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "Tag $TAG does not exist yet - creating release."
+            echo "new=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Setup .NET SDK
+        if: steps.check.outputs.new == 'true'
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            8.0.x
+            10.0.x
+
+      - name: Publish (win-x64, single file)
+        if: steps.check.outputs.new == 'true'
+        run: dotnet publish src/DuckDNSUpdater/DuckDNSUpdater.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -o publish
+
+      - name: Package
+        if: steps.check.outputs.new == 'true'
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          cd publish
+          zip -j "../DuckDNSUpdater-v$VERSION-win-x64.zip" DuckDNSUpdater.exe config.json
+          cd ..
+          ls -la *.zip
+
+      - name: Create tag and GitHub release
+        if: steps.check.outputs.new == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          gh release create "$TAG" "DuckDNSUpdater-${TAG}-win-x64.zip" \
+            --target "$GITHUB_SHA" \
+            --title "$TAG" \
+            --generate-notes
