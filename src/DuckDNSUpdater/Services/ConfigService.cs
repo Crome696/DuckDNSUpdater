@@ -99,13 +99,14 @@ public sealed class ConfigService
 
     private static void Normalize(AppConfig config)
     {
-        config.Domain = config.Domain.Trim();
+        // Hand-edited JSON can contain explicit nulls, which would otherwise throw here.
+        config.Domain = (config.Domain ?? string.Empty).Trim();
         if (config.Domain.EndsWith(".duckdns.org", StringComparison.OrdinalIgnoreCase))
         {
             config.Domain = config.Domain[..^".duckdns.org".Length].TrimEnd('.');
         }
 
-        config.Token = config.Token.Trim();
+        config.Token = (config.Token ?? string.Empty).Trim();
 
         if (config.IntervalSeconds < 30)
         {

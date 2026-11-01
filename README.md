@@ -4,10 +4,10 @@
 
 # DuckDNS Updater
 
-Portable Windows app (.NET 8 WinForms) that updates your DuckDNS domain on a configurable interval.
+Portable Windows app (.NET 10 WinForms) that updates your DuckDNS domain on a configurable interval.
 
 ## Key features
-- Portable Windows app (.NET 8 WinForms), published as a self-contained `win-x64` EXE.
+- Portable Windows app (.NET 10 WinForms), published as a self-contained `win-x64` EXE.
 - Configuration stored in `config.json` next to the EXE (created automatically on first start).
 - Background scheduler that runs periodic updates and stops via cancellation.
 - Public IPv4 resolution via `https://api.ipify.org` and DuckDNS updates via `https://www.duckdns.org/update`.
@@ -57,7 +57,7 @@ MainForm -->|Stop| Updater
 ### Requirements
 
 - Windows x64
-- To build: [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0) or newer
+- To build: [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0) or newer
 - To run the published EXE: no installed .NET required (self-contained)
 
 ## Configuration (`config.json`)
@@ -105,7 +105,7 @@ dotnet publish src/DuckDNSUpdater -c Release -r win-x64 --self-contained true -p
 ## Development and testing
 
 Unit and E2E tests live in `tests/DuckDNSUpdater.Tests` (xUnit; FlaUI for UI smoke).
-Output: `src/DuckDNSUpdater/bin/Release/net8.0-windows/win-x64/publish/`  
+Output: `src/DuckDNSUpdater/bin/Release/net10.0-windows/win-x64/publish/`  
 `config.json` is copied along.
 
 ## Deployment and operations

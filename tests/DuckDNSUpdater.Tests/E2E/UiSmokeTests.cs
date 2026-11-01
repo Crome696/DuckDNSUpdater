@@ -237,7 +237,7 @@ public sealed class AppLaunchFixture : IDisposable
             "DuckDNSUpdater",
             "bin",
             configuration,
-            "net8.0-windows",
+            "net10.0-windows",
             "win-x64",
             "DuckDNSUpdater.exe");
 

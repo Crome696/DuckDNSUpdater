@@ -11,6 +11,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Branding assets under `assets/` (horizontal logo, brandmark, app icon)
 - Windows application and window icon (`assets/app-icon.ico`)
 
+### Changed
+
+- Upgraded from .NET 8 to .NET 10 (LTS); .NET 8 reaches end of support in November 2026
+
+### Fixed
+
+- Stopping and immediately restarting the updater could start a second update loop while the first was still shutting down
+- A `config.json` with `null` for `domain` or `token` threw an exception instead of being reported as invalid
+
 ## [1.0.0]
 
 ### Added

@@ -69,6 +69,7 @@ public sealed class DuckDnsUpdater : IDisposable
                 return;
             }
 
+            _cts?.Dispose();
             _cts = new CancellationTokenSource();
             IsRunning = true;
             _nextUpdateUtc = null;
@@ -98,8 +99,6 @@ public sealed class DuckDnsUpdater : IDisposable
             loopTask = _loopTask;
             _cts = null;
             _loopTask = null;
-            IsRunning = false;
-            _nextUpdateUtc = null;
         }
 
         try
@@ -111,6 +110,8 @@ public sealed class DuckDnsUpdater : IDisposable
             // already disposed
         }
 
+        // IsRunning stays true until the loop has exited, so Start() cannot
+        // launch a second loop while the first one is still winding down.
         if (loopTask is not null)
         {
             try
@@ -121,6 +122,12 @@ public sealed class DuckDnsUpdater : IDisposable
             {
                 // expected on stop
             }
+        }
+
+        lock (_sync)
+        {
+            IsRunning = false;
+            _nextUpdateUtc = null;
         }
 
         cts?.Dispose();
